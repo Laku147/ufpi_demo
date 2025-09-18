@@ -17,10 +17,11 @@ CREATE TABLE IF NOT EXISTS bronze_ufpi.ufpi_db_demo_raw.line_item
     ingest_batch_id  BIGINT       NOT NULL,
     year SMALLINT NOT NULL,
     month TINYINT NOT NULL,
-    data VARIANT NOT NULL
+    data VARIANT NOT NULL,
+    
+        CONSTRAINT fk_line_item_metadata_catalog
+        FOREIGN KEY (ingest_batch_id) REFERENCES workspace.metadata_catalog.ingest (id)
 )
-    CONSTRAINT fk_line_item_metadata_catalog
-        FOREIGN KEY (ingest_batch_id) REFERENCES bronze_ufpi.metadata_catalog.ingest (id)
     
     PARTITIONED BY (year, month)
 ;""")
