@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS metadata_catalog.ingest
     source_entity   STRING NOT NULL,
     record_count    INT NOT NULL,
     timestamp       TIMESTAMP NOT NULL,
-    data VARIANT NOT NULL
-    
-    PARTITIONED BY (source_name)
-);""")
+    data VARIANT NOT NULL   
+)
+
+PARTITIONED BY (source_name);""")
