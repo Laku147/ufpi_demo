@@ -15,17 +15,15 @@ CREATE TABLE IF NOT EXISTS bronze_ufpi.ufpi_db_demo_raw.line_item
 (
     id             BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     ingest_batch_id  BIGINT       NOT NULL,
-    ingest year SMALLINT NOT NULL,
-    ingest month TINYINT NOT NULL,
+    year SMALLINT NOT NULL,
+    month TINYINT NOT NULL,
     data VARIANT NOT NULL
-    
+)
     CONSTRAINT fk_line_item_metadata_catalog
         FOREIGN KEY (ingest_batch_id) REFERENCES bronze_ufpi.metadata_catalog.ingest (id)
     
     PARTITIONED BY (year, month)
-);""")
-
-
+;""")
 
 
 # spark.sql("""
